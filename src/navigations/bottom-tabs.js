@@ -15,7 +15,7 @@ const TabIcon = ({isFocused, icon}) => {
       resizeMode="contain"
       style={[
         {width: hp(30), height: hp(30), marginBottom: hp(2)},
-        isFocused && {tintColor: colors.blue},
+        isFocused && {tintColor: colors.green500},
       ]}
     />
   );
@@ -32,7 +32,7 @@ const DashboardBottomTab = ({route}) => {
     <Tab.Navigator
       initialRouteName="Dashboard"
       tabBarOptions={{
-        activeTintColor: colors.blue,
+        activeTintColor: colors.green500,
         inactiveTintColor: colors.grey400,
         labelStyle: {
           fontFamily: 'Roboto-Medium',
