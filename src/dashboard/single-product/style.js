@@ -1,5 +1,10 @@
-import {StyleSheet} from 'react-native';
-import {wp, hp, paddingTop} from '../../shared/responsive-dimension';
+import {Platform, StyleSheet} from 'react-native';
+import {
+  wp,
+  hp,
+  deviceWidth,
+  paddingTopiOS,
+} from '../../shared/responsive-dimension';
 import {globalStyle} from '../../style';
 import {normalColors as colors} from '../../colors';
 
@@ -12,59 +17,93 @@ export const styles = StyleSheet.create({
   },
   body: {
     marginHorizontal: hp(25),
-    paddingTop: paddingTop - hp(10),
   },
   headerText: {
     ...main.mediumText20,
   },
-  plantText: {
-    ...main.boldText36,
-    color: colors.green500,
+  image: {
+    height: hp(355),
+    width: wp(354),
   },
-  slidersContainer: {
-    backgroundColor: colors.green500,
-    width: wp(50),
-    height: hp(50),
-    borderRadius: hp(12),
+  itemDescriptionContainer: {
+    marginTop: hp(10),
+    width: deviceWidth,
+    height: hp(443),
+    backgroundColor: '#F3F3F3',
+    borderTopLeftRadius: hp(30),
+    borderTopRightRadius: hp(30),
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    marginTop: hp(30),
+    justifyContent: 'space-between',
+  },
+  buyButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: hp(10),
+    backgroundColor: colors.green200,
+    width: wp(150),
+    height: hp(60),
+    borderRadius: hp(40),
   },
-  sliders: {
-    height: hp(24),
-    width: wp(24),
-  },
-  inputContainer: {
-    height: hp(50),
-    width: wp(270),
-    backgroundColor: colors.lightGray,
+  checkoutContainer: {
+    marginHorizontal: hp(20),
+    marginTop: hp(30),
     flexDirection: 'row',
-    borderRadius: hp(12),
-    alignItems: 'center',
+    justifyContent: 'space-between',
   },
-  textInput: {
-    ...main.regularText14,
-    paddingLeft: hp(10),
-    color: colors.dark,
-  },
-  search: {
-    height: hp(20),
-    width: wp(20),
-    marginLeft: hp(10),
-  },
-  image: {
-    height: hp(25),
-    width: wp(30),
-  },
-  textInputArea: {
+  addToCartContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  title: {
+    marginLeft: hp(15),
+    paddingTop: hp(10),
+    ...main.mediumText16,
+  },
+  addButton: {
+    height: hp(34),
+    width: wp(50),
+    borderWidth: hp(3),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  value: {
+    marginLeft: hp(20),
+    marginRight: hp(20),
+    ...main.boldText16,
+  },
+  buttonText: {
+    ...main.boldText20,
+  },
+  priceContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: hp(40),
+    width: wp(100),
+    backgroundColor: colors.green200,
+    borderTopLeftRadius: hp(20),
+    borderBottomLeftRadius: hp(20),
+  },
+  price: {
+    ...main.boldText20,
+    color: colors.white,
+  },
+  descriptionContainer: {
+    marginHorizontal: hp(20),
     marginTop: hp(30),
+  },
+  aboutTitle: {
+    ...main.boldText16,
+    paddingBottom: hp(10),
+  },
+  description: {
+    ...main.regularText12,
   },
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingTop: paddingTop,
+    paddingTop: paddingTopiOS,
   },
 });

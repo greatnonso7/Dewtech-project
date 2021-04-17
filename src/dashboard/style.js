@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {wp, hp, paddingTop} from '../shared/responsive-dimension';
+import {wp, hp, paddingTopiOS} from '../shared/responsive-dimension';
 import {globalStyle} from '../style';
 import {normalColors as colors} from '../colors';
 
@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   },
   body: {
     marginHorizontal: hp(25),
-    paddingTop: paddingTop - hp(10),
+    paddingTop: paddingTopiOS,
   },
   headerText: {
     ...main.mediumText20,
@@ -69,7 +69,51 @@ export const styles = StyleSheet.create({
   title: {
     ...main.regularText16,
   },
+  itemContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: hp(10),
+    backgroundColor: colors.gray,
+    height: hp(200),
+    width: wp(150),
+    marginLeft: hp(10),
+    marginTop: hp(10),
+    marginBottom: hp(10),
+    borderRadius: hp(10),
+  },
+  switchHeaderButton: {
+    height: hp(35),
+    width: '100%',
+    backgroundColor: 'white',
+    right: hp(10),
+    borderColor: 'transparent',
+  },
+  selectedButtonStyle: {
+    borderRadius: wp(5),
+    backgroundColor: colors.white,
+    borderWidth: 0,
+    borderBottomWidth: hp(5),
+    borderBottomColor: colors.green200,
+  },
+  buttonContainerStyle: {
+    width: hp(110),
+  },
+  textStyle: {
+    ...main.regularText12,
+    color: 'rgba(0, 0, 0, 0.5)',
+  },
+  selectedTextStyle: {
+    ...main.regularText14,
+    color: colors.green200,
+  },
   listContainer: {
-    marginTop: hp(30),
+    marginTop: hp(20),
+  },
+  itemTitle: {
+    ...main.regularText14,
+    padding: hp(2),
+  },
+  itemPrice: {
+    ...main.boldText16,
   },
 });
