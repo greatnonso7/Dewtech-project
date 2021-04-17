@@ -51,7 +51,10 @@ const SingleProduct = ({route, navigation: {navigate, goBack}}) => {
             </TouchableOpacity>
           </View>
           <TouchableOpacity style={styles.buyButton}>
-            <Text>Buy</Text>
+            <Text
+              style={{color: 'white', fontSize: 20, fontFamily: 'Roboto-Bold'}}>
+              Buy
+            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

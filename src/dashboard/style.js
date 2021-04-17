@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {wp, hp, paddingTopiOS} from '../shared/responsive-dimension';
 import {globalStyle} from '../style';
 import {normalColors as colors} from '../colors';
@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   },
   body: {
     marginHorizontal: hp(25),
-    paddingTop: paddingTopiOS,
+    paddingTop: Platform.OS === 'ios' ? paddingTopiOS : hp(20),
   },
   headerText: {
     ...main.mediumText20,
