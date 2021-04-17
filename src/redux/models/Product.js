@@ -1,4 +1,6 @@
-import {reducerActions as reducers} from './reducer';
+import axios from 'axios';
+import {reducerActions as reducers} from './reducers';
+import Api from '../../services/apis/productApi';
 
 const IState = {
   isError: false,
@@ -11,14 +13,13 @@ export const Product = {
   reducers,
   effects: (dispatch: {[key: string]: any}) => ({
     async getProducts(_, state) {
-      dispatch.Task.setError(false);
-
-      if (state.Task.tasks > 0) return;
-
+      dispatch.Product.setError(false);
       try {
-        const data = await state.Task.tasks;
+        const data = await axios.get(Api.getAllProducts);
         if (data) {
-          return data;
+          dispatch.Product.setState({
+            products: data.data,
+          });
         }
       } catch (error) {
         this.handleError(error);

@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,23 +8,116 @@ import {
   FlatList,
   TouchableOpacity,
   ScrollView,
+  ActivityIndicator,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './style';
 import {normalColors as colors} from '../colors';
+import {connect} from 'react-redux';
+import {ButtonGroup} from 'react-native-elements';
+import {groupBy, sortBy} from 'lodash';
 
 import {images} from '../images';
 import {deviceWidth, hp, wp} from '../shared/responsive-dimension';
 
 const {icons} = images;
 
-const Dashboard = () => {
+const TAB_BUTTONS = ['All', 'Men', 'Women', 'Electronics', 'Jewelry'];
+const TAB_EMPTY_STATE_TITLE = ['', 'Men', 'Women', 'Electronics', 'Jewelry'];
+
+const Dashboard = props => {
   const [value, setValue] = React.useState({
     index: '1',
     value: 'POPULAR',
   });
+
   const selectType = (id, value) => {
     setValue({index: id, value: value});
+  };
+  const [completed, setCompleted] = useState(true);
+  const [isEmpty, setIsEmpty] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
+
+  React.useEffect(() => {
+    props.getProducts();
+  }, []);
+
+  const updateIndex = index => {
+    setActiveTab(index);
+  };
+
+  const RenderEmptySection = () => {
+    let currentTitle = TAB_EMPTY_STATE_TITLE[activeTab]?.toLowerCase();
+    return (
+      <View>
+        <Text>No {currentTitle} items in the store yet</Text>
+        <Text style={styles.emptyTextTwo}>
+          Your {currentTitle} items will be {'\n'} displayed here.
+        </Text>
+      </View>
+    );
+  };
+
+  const RenderItem = ({item}) => {
+    const {category, description, id, image, price, title} = item;
+    return (
+      <ItemList
+        category={category}
+        description={description}
+        id={id}
+        price={price}
+        image={image}
+        title={title}
+      />
+    );
+  };
+
+  const groupTransactions = (data = []) => {
+    let transGroup = [];
+    const sorted = sortBy(data);
+    const groups = groupBy(sorted, d =>
+      moment(d.createdAt).startOf('day').format(),
+    );
+    Object.keys(groups).forEach(i => {
+      transGroup.push({
+        title: 'Recent Transactions',
+        data: groups[i],
+      });
+    });
+    return transGroup.reverse();
+  };
+
+  const RenderBottomSection = () => {
+    const {products, loading} = props;
+    const jewelry = products.filter(t => t.category === 'jewelry');
+    const men = products.filter(t => t.category === 'men clothing');
+    const women = products.filter(t => t.category === 'women clothing');
+    const electronics = products.filter(t => t.category === 'electronics');
+
+    const getCurrentFashion = () => {
+      switch (activeTab) {
+        case 0:
+          return products;
+        case 1:
+          return men;
+        case 2:
+          return women;
+        case 3:
+          return electronics;
+        case 4:
+          return jewelry;
+        default:
+          return products;
+      }
+    };
+
+    if (loading && !data.length)
+      return (
+        <View style={{marginTop: 40}}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    return;
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -174,4 +267,13 @@ const defaultOutfits = [
   {id: 7, color: '#DEEFC4', aspectRatio: 160 / 145, selected: false},
 ];
 
-export default Dashboard;
+const mapStateToProps = ({Product}) => ({
+  products: Product.products,
+});
+
+const mapDispatchToProps = ({Product: {getProducts, completeTask}}) => ({
+  getProducts: () => getProducts(),
+  completeTask: id => completeTask(id),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -1,6 +1,6 @@
 const baseUrl = 'https://fakestoreapi.com';
 
 export default {
-  getProducts: () => `${baseUrl}/products`,
-  getSingleProduct: id => `${baseUrl}/products/${id}`,
+  getAllProducts: `${baseUrl}/products`,
+  getSingleProduct: `${baseUrl}/products/:id`,
 };
