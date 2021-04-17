@@ -97,7 +97,12 @@ const Dashboard = () => {
           />
         </View>
         <ScrollView>
-          <View style={{flexDirection: 'row'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: hp(20),
+            }}>
             <View>
               {defaultOutfits
                 .filter((_, i) => i % 2 !== 0)
@@ -106,8 +111,9 @@ const Dashboard = () => {
                     key={outfit.id}
                     style={{
                       backgroundColor: outfit.color,
-                      width: deviceWidth * 0.61,
+                      width: deviceWidth * 0.4,
                       height: hp(200) * outfit.aspectRatio,
+                      marginBottom: hp(10),
                     }}>
                     <Text>Hello world</Text>
                   </View>
@@ -121,7 +127,7 @@ const Dashboard = () => {
                     key={outfit.id}
                     style={{
                       backgroundColor: outfit.color,
-                      width: deviceWidth * 0.61,
+                      width: deviceWidth * 0.4,
                       height: hp(200) * outfit.aspectRatio,
                     }}>
                     <Text>Hello world</Text>
