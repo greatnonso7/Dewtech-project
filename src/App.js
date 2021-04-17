@@ -1,12 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import AppNav from './navigations/index';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Text style={{fontFamily: 'Roboto-Bold', fontSize: 20}}>App Status</Text>
-    </SafeAreaView>
+    <NavigationContainer>
+      <AppNav />
+    </NavigationContainer>
   );
 };
 

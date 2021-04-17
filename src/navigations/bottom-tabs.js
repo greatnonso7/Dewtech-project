@@ -1,11 +1,10 @@
 import React from 'react';
 import {Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {images} from '../../images';
-import {normalColors as colors} from '../../colors';
-import {getBottomSpace, hp} from '../../shared/responsive-dimension';
-import Dashboard from '../../dashboard/home';
-import Plan from '../../dashboard/plans';
+import {images} from '../images';
+import {normalColors as colors} from '../colors';
+import {getBottomSpace, hp} from '../shared/responsive-dimension';
+import Dashboard from '../dashboard';
 
 const {icons} = images;
 
@@ -22,6 +21,10 @@ const TabIcon = ({isFocused, icon}) => {
   );
 };
 
+const EmptyScreen = () => {
+  return null;
+};
+
 const Tab = createBottomTabNavigator();
 
 const DashboardBottomTab = ({route}) => {
@@ -32,7 +35,7 @@ const DashboardBottomTab = ({route}) => {
         activeTintColor: colors.taelDark,
         inactiveTintColor: colors.grey400,
         labelStyle: {
-          fontFamily: 'Gelion-Medium',
+          fontFamily: 'Roboto-Medium',
           fontSize: hp(12),
           lineHeight: hp(16),
           marginBottom: hp(6),
@@ -45,6 +48,7 @@ const DashboardBottomTab = ({route}) => {
           backgroundColor: colors.white,
           height: hp(76) + getBottomSpace(),
         },
+        showLabel: false,
       }}>
       <Tab.Screen
         options={{
@@ -58,11 +62,29 @@ const DashboardBottomTab = ({route}) => {
       <Tab.Screen
         options={{
           tabBarIcon: ({focused}) => (
-            <TabIcon icon={icons.plan} isFocused={focused} />
+            <TabIcon icon={icons.like} isFocused={focused} />
           ),
         }}
-        name="Plans"
-        component={Plan}
+        name="Like"
+        component={EmptyScreen}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({focused}) => (
+            <TabIcon icon={icons.notification} isFocused={focused} />
+          ),
+        }}
+        name="Notifications"
+        component={EmptyScreen}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({focused}) => (
+            <TabIcon icon={icons.profile} isFocused={focused} />
+          ),
+        }}
+        name="Profile"
+        component={EmptyScreen}
       />
     </Tab.Navigator>
   );
