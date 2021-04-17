@@ -3,7 +3,7 @@ import {Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {images} from '../images';
 import {normalColors as colors} from '../colors';
-import {getBottomSpace, hp} from '../shared/responsive-dimension';
+import {getBottomSpace, hp, wp} from '../shared/responsive-dimension';
 import Dashboard from '../dashboard';
 
 const {icons} = images;
@@ -14,8 +14,8 @@ const TabIcon = ({isFocused, icon}) => {
       source={icon}
       resizeMode="contain"
       style={[
-        {width: hp(25), height: hp(25), marginBottom: hp(2)},
-        isFocused && {tintColor: colors.taelDark},
+        {width: hp(30), height: hp(30), marginBottom: hp(2)},
+        isFocused && {tintColor: colors.blue},
       ]}
     />
   );
@@ -32,7 +32,7 @@ const DashboardBottomTab = ({route}) => {
     <Tab.Navigator
       initialRouteName="Dashboard"
       tabBarOptions={{
-        activeTintColor: colors.taelDark,
+        activeTintColor: colors.blue,
         inactiveTintColor: colors.grey400,
         labelStyle: {
           fontFamily: 'Roboto-Medium',
@@ -41,12 +41,16 @@ const DashboardBottomTab = ({route}) => {
           marginBottom: hp(6),
         },
         tabStyle: {
-          height: hp(70),
+          height: hp(79),
           paddingVertical: hp(15),
         },
         style: {
           backgroundColor: colors.white,
-          height: hp(76) + getBottomSpace(),
+          height: hp(79) + getBottomSpace(),
+          borderRadius: hp(25),
+          width: wp(360),
+          left: hp(7),
+          bottom: hp(10),
         },
         showLabel: false,
       }}>

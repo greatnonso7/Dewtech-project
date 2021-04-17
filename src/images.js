@@ -7,5 +7,6 @@ export const images = {
     notification: require('./assets/images/notif.png'),
     shop: require('./assets/images/shop.png'),
     sliders: require('./assets/images/sliders.png'),
+    search: require('./assets/images/search.png'),
   },
 };

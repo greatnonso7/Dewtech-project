@@ -1,5 +1,5 @@
 import {normalColors as colors, normalColors} from './colors';
-import {wp, hp} from './shared/resposive-dimension';
+import {wp, hp} from './shared/responsive-dimension';
 
 const font = {
   fontFamily: 'Roboto-Regular',

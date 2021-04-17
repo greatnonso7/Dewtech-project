@@ -90,8 +90,7 @@ export const hp = height => {
 export const wp = width => {
   return widthPercentageToDP((width / 375) * 100);
 };
-export const paddingTopiOS =
-  Platform.OS === 'ios' ? getStatusBarHeight(true) : 0;
+export const paddingTop = getStatusBarHeight(true);
 export const deviceWidth = Dimensions.get('window').width;
 
 export const deviceHeight = Dimensions.get('window').height;
