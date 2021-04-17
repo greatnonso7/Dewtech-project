@@ -7,13 +7,14 @@ import {
   TextInput,
   FlatList,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './style';
 import {normalColors as colors} from '../colors';
 
 import {images} from '../images';
-import {hp, wp} from '../shared/responsive-dimension';
+import {deviceWidth, hp, wp} from '../shared/responsive-dimension';
 
 const {icons} = images;
 
@@ -95,6 +96,40 @@ const Dashboard = () => {
             )}
           />
         </View>
+        <ScrollView>
+          <View style={{flexDirection: 'row'}}>
+            <View>
+              {defaultOutfits
+                .filter((_, i) => i % 2 !== 0)
+                .map(outfit => (
+                  <View
+                    key={outfit.id}
+                    style={{
+                      backgroundColor: outfit.color,
+                      width: deviceWidth * 0.61,
+                      height: hp(200) * outfit.aspectRatio,
+                    }}>
+                    <Text>Hello world</Text>
+                  </View>
+                ))}
+            </View>
+            <View>
+              {defaultOutfits
+                .filter((_, i) => i % 2 == 0)
+                .map(outfit => (
+                  <View
+                    key={outfit.id}
+                    style={{
+                      backgroundColor: outfit.color,
+                      width: deviceWidth * 0.61,
+                      height: hp(200) * outfit.aspectRatio,
+                    }}>
+                    <Text>Hello world</Text>
+                  </View>
+                ))}
+            </View>
+          </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -120,6 +155,17 @@ const data = [
     title: 'SYNTHETIC',
     left: 10,
   },
+];
+
+const defaultOutfits = [
+  {id: 0, color: '#BFEAF5', aspectRatio: 1, selected: false},
+  {id: 1, color: '#BEECC4', aspectRatio: 200 / 145, selected: false},
+  {id: 2, color: '#FFE4D9', aspectRatio: 180 / 145, selected: false},
+  {id: 3, color: '#FFDDDD', aspectRatio: 180 / 145, selected: false},
+  {id: 4, color: '#BFEAF5', aspectRatio: 1, selected: false},
+  {id: 5, color: '#F3F0EF', aspectRatio: 120 / 145, selected: false},
+  {id: 6, color: '#D5C3BB', aspectRatio: 210 / 145, selected: false},
+  {id: 7, color: '#DEEFC4', aspectRatio: 160 / 145, selected: false},
 ];
 
 export default Dashboard;
