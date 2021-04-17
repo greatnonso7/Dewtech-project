@@ -23,6 +23,7 @@ const sharedColors = {
   pink: '#F86267',
   green: '#179F35',
   green500: '#02B762',
+  green200: '#00B761',
   lightGreen: '#6ABAA7',
   red: '#DB353A',
   red500: '#DB353A',

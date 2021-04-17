@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {wp, hp, paddingTop} from '../shared/responsive-dimension';
-import {globalStyle} from '../style';
-import {normalColors as colors} from '../colors';
+import {wp, hp, paddingTop} from '../../shared/responsive-dimension';
+import {globalStyle} from '../../style';
+import {normalColors as colors} from '../../colors';
 
 const {main} = globalStyle(colors);
 
@@ -64,6 +64,7 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: colors.grey50,
+    backgroundColor: colors.white,
+    paddingTop: paddingTop,
   },
 });

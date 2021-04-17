@@ -1,11 +1,20 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import HeaderBar from '../../shared/Header';
+import {styles} from './style';
+
+import {images} from '../../images';
+
+const {icons} = images;
 
 const SingleProduct = ({navigation: {navigate, goBack}}) => {
   return (
-    <View>
-      <HeaderBar hasBackButton onPressLeftIcon={() => goBack()} />
+    <View style={styles.container}>
+      <HeaderBar
+        hasBackButton
+        onPressLeftIcon={() => goBack()}
+        rightIcon={icons.shop}
+      />
     </View>
   );
 };

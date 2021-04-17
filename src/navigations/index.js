@@ -6,7 +6,7 @@ const HomeStack = createStackNavigator();
 
 const AppNav = () => {
   return (
-    <HomeStack.Navigator initialRouteName="SingleProduct" headerMode="none">
+    <HomeStack.Navigator initialRouteName="Dashboard" headerMode="none">
       <HomeStack.Screen name="Dashboard" component={DashboardBottomTab} />
       <HomeStack.Screen name="SingleProduct" component={SingleProduct} />
     </HomeStack.Navigator>

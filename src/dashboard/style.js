@@ -66,4 +66,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.grey50,
   },
+  title: {
+    ...main.regularText16,
+  },
+  listContainer: {
+    marginTop: hp(30),
+  },
 });
